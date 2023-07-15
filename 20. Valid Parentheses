@@ -1,0 +1,22 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        xyz = []
+        stack = {'(':')','{':'}','[':']'}
+        for a in s:
+            if a == '('or a =='['or a =='{':
+                xyz.append(a) #put a into xyz, add to the right
+            elif a !=stack[xyz.pop()] or len(xyz)==0:
+            #xyz.pop=remove element from xyz or left side doesn't exist
+                return False
+        return len(xyz) == 0
+
+class Solution(object):
+    def isValid(self, s):
+        para={'(':')','{':'}','[':']'}
+        stack=[]
+        for idx in s:
+            if idx in '([{':
+                stack.append(idx)
+            elif len(stack)==0 or idx !=para[stack.pop()]:
+                return False
+        return len(stack) == 0
